@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+
+<script>
+        async function doRequest() {
+            let url = 'http://localhost:3000/question';
+            let res = await fetch(url, {
+                            method: 'GET',
+                        });
+
+            if (res.ok) {
+
+                let text = await res.text();
+
+                return text;
+            } else {
+                return `HTTP error: ${res.status}`;
+            }
+        }
+
+        doRequest().then(data => {
+            document.getElementById("output").innerText = data;
+        });
+    </script>
+
+<div id="output">
+
+</div>
+
+</body>
+
+</html>
